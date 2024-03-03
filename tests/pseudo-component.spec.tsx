@@ -1,41 +1,46 @@
 import React from "react";
+import { green, red, bgMagenta } from 'kleur';
 
 let numberOfFails = 0;
+let numberOfSuccess = 0;
 let describeRecCount = 0;
 
+console.log(bgMagenta(" Running tests                                          "));
+
 function describe(name: string, fn: Function) {
-    console.log(`Testing ${String(name)}: `);
+    console.log(` ${String(name)}`);
     describeRecCount++;
     fn();
     describeRecCount--;
 
     if (!describeRecCount) {
+        spearator();
+        console.log(red(` ${numberOfFails} tests FAILED`));
+        console.log(green(` ${numberOfSuccess} tests PASSED`));
         if (numberOfFails > 0) {
-            spearator();
-            console.log(`${numberOfFails} tests failed\n`);
-            process.exit(1);
+            process.exit(-1);
         } else {
-            spearator();
-            console.log(`All tests passed\n`);
             process.exit(0);
         }
     }
 }
 function spearator() {
-    console.log("_____________________________________________________________________________________________");
+    console.log("__________________________________________________________");
 }
 
 function it(name: string, fn: Function) {
-    const prefix = "  - Test";
+    const indent = "    - ";
     try {
         fn();
-        console.log(`${prefix} ${String(name)} PASSED`);
+        console.log(green(`${indent} ${String(name)}: PASSED`));
+        numberOfSuccess++;
     } catch (e) {
-        console.log(`${prefix} ${String(name)} FAILED: ${e.message}`);
+        console.log(red(`${indent} ${String(name)}: FAILED (${e.message})`));
         numberOfFails++;
     }
 }
 
+// Also works with classes
 // class MyPseudoComponent {
 //     constructor() {}
 
@@ -69,7 +74,7 @@ function MyJSXPsuedoComponent({ name }) {
 }
 
 describe("Testing a plain function", () => {
-    describe("MyPseudoComponent Tests", () => {
+    describe("Testing MyPseudoComponent", () => {
         it("Should propery sum number with sum()", () => {
             const what = new MyPseudoComponent();
 
