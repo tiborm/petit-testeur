@@ -4,7 +4,7 @@ let numberOfFails = 0;
 let numberOfSuccess = 0;
 let describeRecCount = 0;
 
-console.log(bgMagenta(" Running tests                                          "));
+console.log(bgMagenta("\n\n Running tests"));
 
 function describe(name: string, fn: Function) {
     console.log(` ${String(name)}`);

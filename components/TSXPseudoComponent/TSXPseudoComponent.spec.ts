@@ -22,4 +22,4 @@ describe("Testing a plain function", () => {
     });
 });
 
-export {}
+export default {}

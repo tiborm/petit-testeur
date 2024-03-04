@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "ts-node components/TSXPseudoComponent/TSXPseudoComponent.spec.ts echo $?"
+    "test": "ts-node components/TSXPseudoComponent/TSXPseudoComponent.spec.ts",
+    "start": "webpack --silent && node ./dist/bundle.js"
+
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,9 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.61"
+    "@types/react": "^18.2.61",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
   }
 }

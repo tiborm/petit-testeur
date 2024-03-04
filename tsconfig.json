@@ -10,4 +10,5 @@
       "@test-lib/*": ["./utils/test-lib/*"]
     },
     "include": ["./**/*.ts", "./**/*.tsx"],
+    "exclude": ["node_modules", "dist", "*.json", "*.js"]
 }
