@@ -2,16 +2,16 @@ import { green, red, bgMagenta } from "kleur";
 
 let numberOfFails = 0;
 let numberOfSuccess = 0;
-let describeRecCount = 0;
+let levelOfFnNesting = 0;
 let isResultAdded = false;
 
 console.log(bgMagenta("\n\n Running tests (What test framework Tibi is playing with?)"));
 
 function describe(name: string, fn: Function) {
-    describeRecCount++;
+    levelOfFnNesting++;
 
     if (!isResultAdded) {
-        const interval = setInterval(() => {
+        setInterval(() => {
             spearator();
             console.log(red(` ${numberOfFails} tests FAILED`));
             console.log(green(` ${numberOfSuccess} tests PASSED`));
@@ -20,19 +20,18 @@ function describe(name: string, fn: Function) {
             } else {
                 process.exit(0);
             }
-
-            clearInterval(interval);
         }, 20);
 
         isResultAdded = true;
     }
 
     const interval = setInterval(() => {
-        const indent = ' '.repeat(describeRecCount + 1);
+        const indent = ' '.repeat(levelOfFnNesting + 1);
         
         console.log(indent + String(name));
         fn();
-        describeRecCount--;
+
+        levelOfFnNesting--;
         clearInterval(interval);
     }, 0);
 }
@@ -41,7 +40,7 @@ function spearator() {
 }
 
 function it(name: string, fn: Function) {
-    const indent = ' '.repeat(describeRecCount + 1);
+    const indent = '     ';
 
     try {
         fn();

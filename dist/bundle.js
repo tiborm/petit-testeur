@@ -3008,13 +3008,13 @@ exports.expect = exports.it = exports.describe = void 0;
 var kleur_1 = __webpack_require__(/*! kleur */ "./node_modules/kleur/index.js");
 var numberOfFails = 0;
 var numberOfSuccess = 0;
-var describeRecCount = 0;
+var levelOfFnNesting = 0;
 var isResultAdded = false;
-console.log((0, kleur_1.bgMagenta)("\n\n Running tests"));
+console.log((0, kleur_1.bgMagenta)("\n\n Running tests (What test framework Tibi is playing with?)"));
 function describe(name, fn) {
-    describeRecCount++;
+    levelOfFnNesting++;
     if (!isResultAdded) {
-        var interval_1 = setInterval(function () {
+        setInterval(function () {
             spearator();
             console.log((0, kleur_1.red)(" ".concat(numberOfFails, " tests FAILED")));
             console.log((0, kleur_1.green)(" ".concat(numberOfSuccess, " tests PASSED")));
@@ -3024,15 +3024,14 @@ function describe(name, fn) {
             else {
                 process.exit(0);
             }
-            clearInterval(interval_1);
         }, 20);
         isResultAdded = true;
     }
     var interval = setInterval(function () {
-        var indent = ' '.repeat(describeRecCount + 1);
+        var indent = ' '.repeat(levelOfFnNesting + 1);
         console.log(indent + String(name));
         fn();
-        describeRecCount--;
+        levelOfFnNesting--;
         clearInterval(interval);
     }, 0);
 }
@@ -3041,7 +3040,7 @@ function spearator() {
     console.log("__________________________________________________________");
 }
 function it(name, fn) {
-    var indent = ' '.repeat(describeRecCount + 1);
+    var indent = '     ';
     try {
         fn();
         console.log((0, kleur_1.green)("".concat(indent, "- ").concat(String(name), ": PASSED")));
