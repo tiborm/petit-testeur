@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "ts-node ./tests/*.spec.tsx echo $?"
+    "test": "ts-node components/TSXPseudoComponent/TSXPseudoComponent.spec.ts echo $?"
   },
   "author": "",
   "license": "ISC",

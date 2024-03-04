@@ -1,4 +1,3 @@
-import React from "react";
 import { green, red, bgMagenta } from 'kleur';
 
 let numberOfFails = 0;
@@ -59,37 +58,4 @@ function expect(value: any) {
     };
 }
 
-function MyPseudoComponent() {
-    this.summ = (a: number, b: number) => {
-        return a + b;
-    };
-}
-
-function MyJSXPsuedoComponent({ name }) {
-    return (
-        <div>
-            <h1>{name}</h1>
-        </div>
-    );
-}
-
-describe("Testing a plain function", () => {
-    describe("Testing MyPseudoComponent", () => {
-        it("Should propery sum number with sum()", () => {
-            const what = new MyPseudoComponent();
-
-            expect(what.summ(1, 2)).toBe(4);
-        });
-    });
-
-    describe("Testing pseudo TSX React component", () => {
-        it("Should return with a testable DOM", () => {
-            const what = MyJSXPsuedoComponent({ name: "Hello" });
-
-            if (what.type !== "div") {
-                throw new Error("Expected div");
-            }
-        });
-    });
-});
-
+export { describe, it, expect };

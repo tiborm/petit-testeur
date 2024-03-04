@@ -1,7 +1,13 @@
 {
     "compilerOptions": {
+      "outDir": "./dist/",
       "esModuleInterop": true,
       "target": "ES5",
       "jsx": "react",
-    }
+    },
+    "paths": {
+      "@components/*": ["./components/**/*"],
+      "@test-lib/*": ["./utils/test-lib/*"]
+    },
+    "include": ["./**/*.ts", "./**/*.tsx"],
 }
