@@ -3,6 +3,8 @@ const path = require('path');
 module.exports = {
     entry: './index.ts',
     "mode": "development",
+    "stats": "errors-only",
+    "devtool": "source-map",
     module: {
         rules: [
             {
