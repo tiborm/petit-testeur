@@ -1,5 +1,9 @@
 const path = require('path');
 
+// NOTE;
+// If am using standart webpack config name, it will be recognized by Next.js
+// and will use Babel instead of SWC compile.What I would like to avoid due to SWC is much faster.
+// And Next.js is much better integratid with it.
 module.exports = {
     entry: './index.ts',
     "mode": "development",
