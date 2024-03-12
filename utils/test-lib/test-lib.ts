@@ -8,7 +8,7 @@ console.log(bgMagenta("\n\n Running tests (What test framework Tibi is playing w
 
 function describe(name: string, fn: Function) {
     if (!isResultAdded) {
-        setInterval(() => {
+        setTimeout(() => {
             spearator();
             console.log(red(` ${numberOfFails} tests FAILED`));
             console.log(green(` ${numberOfSuccess} tests PASSED`));
@@ -17,16 +17,14 @@ function describe(name: string, fn: Function) {
             } else {
                 process.exit(0);
             }
-        }, 40);
+        }, 100);
 
         isResultAdded = true;
     }
 
-    const interval = setInterval(() => {
+    setTimeout(() => {
         console.log(String(name));
         fn();
-
-        clearInterval(interval);
     }, 10);
 }
 function spearator() {
