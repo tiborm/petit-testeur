@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "ts-node components/TSXPseudoComponent/TSXPseudoComponent.spec.ts",
+    "test": "ts-node index.ts",
     "start": "webpack --config test.bundle.config.js && node ./dist/bundle.js"
 
   },
